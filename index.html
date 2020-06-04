@@ -3,9 +3,12 @@
 
 <head>
     <meta charset="utf-8">
-    <link rel="icon" href="icon_path" type="image/icon type">
+    <!-- <link rel="icon" href="icon_path" type="image/icon type"> -->
     <link id="favicon" rel="icon" type="image/png" sizes="64x64" href="images/trelloicon.png">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
     <title>Demo Trello</title>
 </head>
 
@@ -46,55 +49,106 @@
                     <div class="list-title">
                         Todo
                     </div>
-                    <div class="card">
-                        Card 1
+                    <div id="card-todo">
+                        <div class="card" onclick="editTask('todo')" id="todo-card">
+                            card 1
+                            <span class="glyphicon glyphicon-pencil edit-icon"></span>
+                        </div>
                     </div>
-                    <div class="card">
-                        Card 2
-                    </div>
-                    <div class="add-card">
+                    <div onclick="displayDiv('add-card-todo', 'input-card-todo')" class="add-card" id="add-card-todo">
                         + Add another card
+                    </div>
+
+                    <div style="display: none;" class="add-card" id="input-card-todo">
+                        <input type="text" class="add-card" id="todo-field" placeholder="Enter the title for this card">
+                        <button class="add-card" id="add-todo" onclick="newTask('todo')" value="Add card">Add Card</button>
+                        <button class="add-card" onclick="displayDiv('input-card-todo', 'add-card-todo')" value="X">X</button>
                     </div>
                 </div>
                 <div class="board-list">
                     <div class="list-title">
                         Doing
                     </div>
-                    <div class="card">
-                        Card 1
+                    <div id="card-doing">
+                        <div class="card" onclick="editTask('doing')" id="doing-card">
+                            Card 1
+                            <span class="glyphicon glyphicon-pencil edit-icon"></span>
+                        </div>
                     </div>
-                    <div class="add-card">
+                    <div onclick="displayDiv('add-card-doing', 'input-card-doing')" class="add-card" id="add-card-doing">
                         + Add another card
+                    </div>
+                    <div style="display: none;" class="add-card" id="input-card-doing">
+                        <input type="text" class="add-card" id="doing-field" placeholder="Enter the title for this card">
+                        <button class="add-card" onclick="newTask('doing')" value="Add card">Add Card</button>
+                        <button class="add-card" onclick="displayDiv('input-card-doing', 'add-card-doing')" value="X">X</button>
                     </div>
                 </div>
                 <div class="board-list">
                     <div class="list-title">
                         Verify
                     </div>
-                    <div class="card">
-                        Card 1
+                    <div id="card-verify">
+                        <div class="card" onclick="editTask('verify')" id="verify-card">
+                            Card 1
+                            <span class="glyphicon glyphicon-pencil edit-icon"></span>
+                        </div>
                     </div>
-                    <div class="add-card">
+                    <div onclick="displayDiv('add-card-verify', 'input-card-verify')" class="add-card" id="add-card-verify">
                         + Add another card
+                    </div>
+                    <div style="display: none;" class="add-card" id="input-card-verify">
+                        <input type="text" class="add-card" id="verify-field" placeholder="Enter the title for this card">
+                        <button class="add-card" onclick="newTask('verify')" value="Add card">Add Card</button>
+                        <button class="add-card" onclick="displayDiv('input-card-verify', 'add-card-verify')" value="X">X</button>
                     </div>
                 </div>
                 <div class="board-list">
                     <div class="list-title">
                         Done
                     </div>
-                    <div class="card">
-                        Card 1
+                    <div id="card-done">
+                        <div class="card" onclick="editTask('done')" id="done-card">
+                            Card 1
+                            <span class="glyphicon glyphicon-pencil edit-icon"></span>
+                        </div>
                     </div>
-                    <div class="add-card">
+                    <div onclick="displayDiv('add-card-done', 'input-card-done')" class="add-card" id="add-card-done">
                         + Add another card
+                    </div>
+                    <div style="display: none;" class="add-card" id="input-card-done">
+                        <input type="text" class="add-card" id="done-field" placeholder="Enter the title for this card">
+                        <button class="add-card" onclick="newTask('done')" value="Add card">Add Card</button>
+                        <button class="add-card" onclick="displayDiv('input-card-done', 'add-card-done')" value="X">X</button>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- Modal -->
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title" id="titleModal">Modal Header</h4>
+                    </div>
+                    <div class="modal-body" id="decsModal">
+
+                        <p>Some text in the modal.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
-    <script src="js/script.js">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js "></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js "></script>
+    <script src="js/script.js ">
     </script>
 </body>
 
