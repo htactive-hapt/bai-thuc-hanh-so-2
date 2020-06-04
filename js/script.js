@@ -14,58 +14,28 @@ function displayDiv(hide, show) {
 }
 
 
-// editTask = (listId, taskId) => {
-//     var editTaskByModal = document.getElementById(`${listId}-${taskId}`).innerText;
-//     var decs = "Hà dang ngoi choi cờ vua!";
-//     document.getElementById(`${listId}-${taskId}`).setAttribute("data-toggle", "modal");
-//     document.getElementById(`${listId}-${taskId}`).setAttribute("data-target", "#myModal");
-//     document.getElementById("titleModal").innerHTML = editTaskByModal;
-//     let p = document.createElement('p');
-//     p.innerHTML = decs;
-//     document.getElementById("decsModal").appendChild(p);
-// }
-
-
-// editTask = (listId, taskId) => {
-//     var editTaskByModal = document.getElementById(`${listId}-${taskId}`).innerText;
-//     document.getElementById(`${listId}-${taskId}`).setAttribute("data-toggle", "modal");
-//     document.getElementById(`${listId}-${taskId}`).setAttribute("data-target", "#myModal");
-//     document.getElementById("titleModal").innerHTML = editTaskByModal;
-//     let p = document.createElement('p');
-//     p.innerHTML = listId;
-//     document.getElementById("decsModal").appendChild(p);
-// }
-
-// newTask = (taskValue) => {
-//     var inputTask = document.getElementById(`${taskValue}-field`).value;
-//     if (inputTask === '') {
-//         alert("Could you please enter a task ?");
-//     } else {
-//         var newDivTask = document.createElement("div");
-//         newDivTask.className = `card ${taskValue}-card`;
-//         var spanTag = document.createElement("span");
-//         spanTag.className = `glyphicon glyphicon-pencil edit-icon edit-${taskValue}`;
-//         newDivTask.innerHTML = inputTask;
-//         newDivTask.appendChild(spanTag);
-//         document.getElementById(`card-${taskValue}`).appendChild(newDivTask);
-//     }
-//     document.getElementById(`${taskValue}-field`).value = "";
-//     document.getElementById(`${taskValue}-field`).focus();
-// }
+generateRandomId = (length) => {
+    let chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    if (!length) {
+        length = Math.floor(Math.random() * chars.length);
+    }
+    let randomId = '';
+    for (let i = 0; i < length; i++) {
+        randomId += chars[Math.floor(Math.random() * chars.length)];
+    }
+    return randomId;
+}
 
 newTask = (taskValue) => {
-    var inputTask = document.getElementById(`${taskValue}-field`).value;
+    let inputTask = document.getElementById(`${taskValue}-field`).value;
+    let id = generateRandomId(5);
     if (inputTask === '') {
         alert("Could you please enter a task ?");
     } else {
         var newDivTask = document.createElement("div");
         newDivTask.className = `card ${taskValue}-card`;
-        var
-        // // Thêm tí cho vui
-            newDivTask.id = 'todo-card';
-        newDivTask.setAttribute('onclick', `editTask('todo', 'card')`);
-
-        // span edit
+        newDivTask.id = id;
+        newDivTask.setAttribute("onClick", "editTask(id)");
         var spanTag = document.createElement("span");
         spanTag.className = `glyphicon glyphicon-pencil edit-icon edit-${taskValue}`;
         newDivTask.innerHTML = inputTask;
@@ -75,6 +45,18 @@ newTask = (taskValue) => {
     document.getElementById(`${taskValue}-field`).value = "";
     document.getElementById(`${taskValue}-field`).focus();
 }
+
+editTask = (id) => {
+    var editTaskByModal = document.getElementById(`${id}`).innerText;
+    var decs = "Hà dang ngoi choi cờ vua!";
+    document.getElementById(`${id}`).setAttribute("data-toggle", "modal");
+    document.getElementById(`${id}`).setAttribute("data-target", "#myModal");
+    document.getElementById("titleModal").innerHTML = editTaskByModal;
+    let p = document.createElement('p');
+    p.innerHTML = decs;
+    document.getElementById("decsModal").appendChild(p);
+}
+
 
 showModal = (taskValue) => {
     return `
