@@ -52,7 +52,7 @@
                     <div id="card-todo">
                         <div class="card" onclick="showDetail('1')" id="1">
                             Dont touch me
-                            <span class="glyphicon glyphicon-pencil edit-icon"></span>
+                            <span onclick="editTask(event,1)" class="glyphicon glyphicon-pencil edit-icon"></span>
                         </div>
                     </div>
                     <div onclick="displayDiv('add-card-todo', 'input-card-todo')" class="add-card" id="add-card-todo">
@@ -61,7 +61,8 @@
 
                     <div style="display: none;" class="add-card" id="input-card-todo">
                         <input type="text" class="add-card" id="todo-field" placeholder="Enter the title for this card">
-                        <button class="add-card" id="add-todo" onclick="newTask('todo')" value="Add card">Add Card</button>
+                        <button class="add-card" id="add-todo" onclick="newTask('todo')" value="Add card">Add
+                            Card</button>
                         <button class="add-card" onclick="displayDiv('input-card-todo', 'add-card-todo')" value="X">X</button>
                     </div>
                 </div>
@@ -72,7 +73,7 @@
                     <div id="card-doing">
                         <div class="card" onclick="showDetail('2')" id="2">
                             No no! Click on another card
-                            <span class="glyphicon glyphicon-pencil edit-icon"></span>
+                            <span onclick="editTask(event,2)" class="glyphicon glyphicon-pencil edit-icon"></span>
                         </div>
                     </div>
                     <div onclick="displayDiv('add-card-doing', 'input-card-doing')" class="add-card" id="add-card-doing">
@@ -91,7 +92,7 @@
                     <div id="card-verify">
                         <div class="card" onclick="showDetail('3')" id="3">
                             Ahihi
-                            <span class="glyphicon glyphicon-pencil edit-icon"></span>
+                            <span onclick="editTask(event,3)" class="glyphicon glyphicon-pencil edit-icon"></span>
                         </div>
                     </div>
                     <div onclick="displayDiv('add-card-verify', 'input-card-verify')" class="add-card" id="add-card-verify">
@@ -110,7 +111,7 @@
                     <div id="card-done">
                         <div class="card" onclick="showDetail('4')" id="4">
                             You hurt me rồi đó!
-                            <span class="glyphicon glyphicon-pencil edit-icon"></span>
+                            <span onclick="editTask(event,4)" class="glyphicon glyphicon-pencil edit-icon"></span>
                         </div>
                     </div>
                     <div onclick="displayDiv('add-card-done', 'input-card-done')" class="add-card" id="add-card-done">
@@ -118,6 +119,16 @@
                     </div>
                     <div style="display: none;" class="add-card" id="input-card-done">
                         <input type="text" class="add-card" id="done-field" placeholder="Enter the title for this card">
+                        <button class="add-card" onclick="newTask('done')" value="Add card">Add Card</button>
+                        <button class="add-card" onclick="displayDiv('input-card-done', 'add-card-done')" value="X">X</button>
+                    </div>
+                </div>
+                <div class="board-list">
+                    <div onclick="displayDiv('add-list', 'add-list-input')" class="add-list" id="add-list">
+                        + Add another list
+                    </div>
+                    <div style="display: none;" class="add-card" id="add-list-input">
+                        <input type="text" class="add-list" id="add-list" placeholder="Enter the list title for this card">
                         <button class="add-card" onclick="newTask('done')" value="Add card">Add Card</button>
                         <button class="add-card" onclick="displayDiv('input-card-done', 'add-card-done')" value="X">X</button>
                     </div>
@@ -132,13 +143,14 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title" id="titleModal">Modal Header</h4>
+                        <h4 class="modal-title">Modal Header</h4>
                     </div>
                     <div class="modal-body" id="decsModal">
-
-                        <p>Some text in the modal.</p>
+                        <input type="text" name="titleModal" id="titleModal">
+                        <p></p>
                     </div>
                     <div class="modal-footer">
+                        <button type="button" class="btn btn-success save-item" id="save-edit-task-button">Save</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                 </div>
