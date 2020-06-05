@@ -44,9 +44,9 @@
                     <div class="button">Butler</div>
                 </div>
             </div>
-            <div class="board-lists">
+            <div class="board-lists" id="board-lists">
                 <div class="board-list">
-                    <div class="list-title">
+                    <div id="todo-list" class="list-title">
                         Todo
                     </div>
                     <div id="card-todo">
@@ -62,12 +62,12 @@
                     <div style="display: none;" class="add-card" id="input-card-todo">
                         <input type="text" class="add-card" id="todo-field" placeholder="Enter the title for this card">
                         <button class="add-card" id="add-todo" onclick="newTask('todo')" value="Add card">Add
-                            Card</button>
+                                Card</button>
                         <button class="add-card" onclick="displayDiv('input-card-todo', 'add-card-todo')" value="X">X</button>
                     </div>
                 </div>
                 <div class="board-list">
-                    <div class="list-title">
+                    <div id="doing-list" class="list-title">
                         Doing
                     </div>
                     <div id="card-doing">
@@ -86,7 +86,7 @@
                     </div>
                 </div>
                 <div class="board-list">
-                    <div class="list-title">
+                    <div id="verify-list" class="list-title">
                         Verify
                     </div>
                     <div id="card-verify">
@@ -105,7 +105,7 @@
                     </div>
                 </div>
                 <div class="board-list">
-                    <div class="list-title">
+                    <div id="done-list" class="list-title">
                         Done
                     </div>
                     <div id="card-done">
@@ -123,14 +123,15 @@
                         <button class="add-card" onclick="displayDiv('input-card-done', 'add-card-done')" value="X">X</button>
                     </div>
                 </div>
-                <div class="board-list">
-                    <div onclick="displayDiv('add-list', 'add-list-input')" class="add-list" id="add-list">
+
+                <div class="board-list add-list">
+                    <div onclick="displayDiv('add-list', 'add-list-input')" class="add-card add-list" id="add-list">
                         + Add another list
                     </div>
-                    <div style="display: none;" class="add-card" id="add-list-input">
-                        <input type="text" class="add-list" id="add-list" placeholder="Enter the list title for this card">
-                        <button class="add-card" onclick="newTask('done')" value="Add card">Add Card</button>
-                        <button class="add-card" onclick="displayDiv('input-card-done', 'add-card-done')" value="X">X</button>
+                    <div style="display: none;" class="add-card add-list" id="add-list-input">
+                        <input type="text" class="add-list" id="add-list-field" placeholder="Enter the list title">
+                        <button class="add-card" onclick="addNewList()" value="Add new list">Add List</button>
+                        <button class="add-card" onclick="displayDiv('add-list-input', 'add-list')" value="X">X</button>
                     </div>
                 </div>
             </div>
@@ -143,10 +144,13 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Modal Header</h4>
+                        <h4 class="modal-title" id="modal-title">inlist
+                            <a href="#" class="modal"></a>
+                        </h4>
                     </div>
                     <div class="modal-body" id="decsModal">
-                        <input type="text" name="titleModal" id="titleModal">
+
+                        <input type="text" name="titleTask" id="titleTask">
                         <p></p>
                     </div>
                     <div class="modal-footer">
