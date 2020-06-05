@@ -13,9 +13,8 @@ function displayDiv(hide, show) {
     document.getElementById(show).style.display = "block";
 }
 
-
 generateRandomId = (length) => {
-    let chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     if (!length) {
         length = Math.floor(Math.random() * chars.length);
     }
@@ -26,6 +25,30 @@ generateRandomId = (length) => {
     return randomId;
 }
 
+document.getElementById('todo-field').addEventListener('keypress', event => {
+    if (event.key === 'Enter') {
+        newTask('todo');
+    }
+});
+
+document.getElementById('doing-field').addEventListener('keypress', event => {
+    if (event.key === 'Enter') {
+        newTask('doing');
+    }
+});
+
+document.getElementById('verify-field').addEventListener('keypress', event => {
+    if (event.key === 'Enter') {
+        newTask('verify');
+    }
+});
+
+document.getElementById('done-field').addEventListener('keypress', event => {
+    if (event.key === 'Enter') {
+        newTask('done');
+    }
+});
+
 newTask = (taskValue) => {
     let inputTask = document.getElementById(`${taskValue}-field`).value;
     let id = generateRandomId(5);
@@ -35,9 +58,10 @@ newTask = (taskValue) => {
         var newDivTask = document.createElement("div");
         newDivTask.className = `card ${taskValue}-card`;
         newDivTask.id = id;
-        newDivTask.setAttribute("onClick", "editTask(id)");
+        newDivTask.setAttribute("onClick", "showDetail(id)");
         var spanTag = document.createElement("span");
         spanTag.className = `glyphicon glyphicon-pencil edit-icon edit-${taskValue}`;
+        spanTag.setAttribute("onclick", "editTask(id)");
         newDivTask.innerHTML = inputTask;
         newDivTask.appendChild(spanTag);
         document.getElementById(`card-${taskValue}`).appendChild(newDivTask);
@@ -46,8 +70,9 @@ newTask = (taskValue) => {
     document.getElementById(`${taskValue}-field`).focus();
 }
 
-editTask = (id) => {
+showDetail = (id) => {
     var editTaskByModal = document.getElementById(`${id}`).innerText;
+    console.log(id)
     var decs = "Hà dang ngoi choi cờ vua!";
     document.getElementById(`${id}`).setAttribute("data-toggle", "modal");
     document.getElementById(`${id}`).setAttribute("data-target", "#myModal");
@@ -57,6 +82,11 @@ editTask = (id) => {
     document.getElementById("decsModal").appendChild(p);
 }
 
+editTask = (id) => {
+    let task = document.getElementById(`${id}`);
+    console.log(id);
+    console.log(task);
+}
 
 showModal = (taskValue) => {
     return `
